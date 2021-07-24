@@ -32,4 +32,27 @@ fun main() {
     }
 
     println(af1("hello", 5)) //append result hello, 5
+
+    // it 关键字，如果匿名函数只有一个入参，定义函数时，可以不写参数名
+    val af2 : (String) -> String = {
+        "Hello $it"
+    }
+
+    println(af2("Alice")) //Hello Alice
+
+    // 匿名函数类型推断，包括返回类型推断是参数类型推断
+    // 返回类型推断
+    // 声明的时候不需要显式写上返回值类型
+    val af3  = {
+        "Hello everyone"
+    }
+    println(af3()) //Hello everyone
+
+    // 参数类型推断
+    // 声明函数的时候，不需要显式写明参数的类型，在定义的时候再写明
+    val af4 = {name:String, year:Int ->
+        "Hello $name from $year"
+    }
+    println(af4("Jack", 2020)) //Hello Jack from 2020
+
 }
