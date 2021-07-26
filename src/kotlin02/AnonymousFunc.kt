@@ -63,11 +63,11 @@ fun main() {
     }
 
     showOnBoard("游戏机", getDiscount1, 7.8f) //2021年双十一，游戏机促销还有 4 小时
-
-    //2022年双十一，笔记本电脑促销还有 8 分钟
-    showOnBoard("笔记本电脑", { gn:String, hour: Int ->
-        "2022年双十一，${gn}促销还有 $hour 分钟"
-    }, 6.5f)
+//
+//    //2022年双十一，笔记本电脑促销还有 8 分钟
+//    showOnBoard("笔记本电脑", { gn:String, hour: Int ->
+//        "2022年双十一，${gn}促销还有 $hour 分钟"
+//    }, 6.5f)
 
     // 如果函数作为最后一个参数，调用时作为参数的函数体，写在()之外
     //2022年双十一，显卡促销还有 21 分钟
@@ -76,7 +76,11 @@ fun main() {
     }
 }
 
-fun showOnBoard(goodsName: String, getDiscount: (String, Int) -> String, discount:Float) {
+/**
+ * 内联函数
+ * 内联函数的函数体复制到调用处实现内联
+ */
+inline fun showOnBoard(goodsName: String, getDiscount: (String, Int) -> String, discount:Float) {
     val hour = (1..24).shuffled().last()
     println(getDiscount(goodsName,  hour))
 }
