@@ -84,5 +84,6 @@ object LinkedListUtil {
             print("${cur.`val`} ")
             cur = cur.next
         }
+        println()
     }
 }
