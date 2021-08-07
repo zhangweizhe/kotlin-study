@@ -2,16 +2,11 @@ package linkedlist
 
 fun main() {
 
-
-    val createList = LinkedListUtil.createList(intArrayOf(1, 2, 1))
-
-    println(isPalindrome2(createList))
 }
 
-private fun isPalindrome2(head: ListNode?): Boolean {
-    var rightHalf = getRightHalfIn(head)
-    var reverse = reverse(rightHalf)
-
+private fun isPalindrome(head: ListNode?): Boolean {
+    val findRightHalf = findRightHalf(head)
+    val reverse = reverse(findRightHalf)
     var left = head
     var right = reverse
     while (left != null && right != null) {
@@ -24,10 +19,10 @@ private fun isPalindrome2(head: ListNode?): Boolean {
     return true
 }
 
-fun getRightHalfIn(head: ListNode?): ListNode? {
-    var fast = head
-    var slow = head
-    while (fast != null && fast.next != null) {
+private fun findRightHalf(head: ListNode?):ListNode? {
+    var fast:ListNode? = head
+    var slow:ListNode? = head
+    while (fast?.next != null) {
         fast = fast.next?.next
         slow = slow?.next
     }
@@ -37,11 +32,11 @@ fun getRightHalfIn(head: ListNode?): ListNode? {
     return slow?.next
 }
 
-private fun reverse(head: ListNode?):ListNode? {
+private fun reverse(head: ListNode?): ListNode? {
     var prev:ListNode? = null
-    var cur:ListNode? = head
+    var cur = head
     while (cur != null) {
-        var next = cur.next
+        val next = cur.next
         cur.next = prev
         prev = cur
         cur = next

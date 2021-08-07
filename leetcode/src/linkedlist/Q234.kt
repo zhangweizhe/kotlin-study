@@ -15,7 +15,7 @@ fun main() {
  * 时间复杂度O(n)
  * 空间复杂度O(n)
  */
-fun isPalindrome(head: ListNode?): Boolean {
+private fun isPalindrome(head: ListNode?): Boolean {
     var cur = head
     var newHead:ListNode? = null
     while (cur != null) {
