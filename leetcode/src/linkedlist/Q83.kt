@@ -5,7 +5,7 @@ fun main() {
 
 }
 
-fun deleteDuplicates(head: ListNode?): ListNode? {
+private fun deleteDuplicates(head: ListNode?): ListNode? {
     if (head == null) {
         return null
     }
