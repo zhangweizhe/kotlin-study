@@ -23,7 +23,7 @@ const val BASE = 987
 class MyHashMap() {
 
     /** Initialize your data structure here. */
-    val array: Array<Node?> = arrayOfNulls(BASE)
+    private val array: Array<Node?> = arrayOfNulls(BASE)
 
     /** value will always be non-negative. */
     fun put(key: Int, value: Int) {
@@ -85,7 +85,7 @@ class MyHashMap() {
 
 }
 
-class Node(var value: Pair<Int, Int>) {
+private class Node(var value: Pair<Int, Int>) {
     var next:Node? = null
 }
 
