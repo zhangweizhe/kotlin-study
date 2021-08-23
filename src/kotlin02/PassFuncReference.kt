@@ -12,7 +12,7 @@ fun getTargetString():String {
     return "hello word"
 }
 
-fun doPrint(getTargetString: ()->String) {
+private fun doPrint(getTargetString: ()->String) {
     println(getTargetString())
 }
 
