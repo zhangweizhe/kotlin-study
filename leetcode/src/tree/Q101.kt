@@ -9,14 +9,37 @@ fun main() {
     val root = TreeNode(1)
     root.left = TreeNode(2)
     root.right = TreeNode(2)
-//    root.left?.left = TreeNode(3)
-    root.left?.right = TreeNode(3)
+    root.left?.left = TreeNode(3)
+//    root.left?.right = TreeNode(3)
 //    root.right?.left = TreeNode(4)
     root.right?.right = TreeNode(3)
     println(isSymmetric(root))
 }
 
+/**
+ * 递归
+ */
 fun isSymmetric(root: TreeNode?): Boolean {
+    return help(root, root)
+}
+
+private fun help(left: TreeNode?, right: TreeNode?):Boolean {
+    if (left == null && right == null) {
+        return true
+    }
+    if (left == null || right == null) {
+        return false
+    }
+    if (left.`val` != right.`val`) {
+        return false
+    }
+    return help(left.left, right.right) && help(left.right, right.left)
+}
+
+/**
+ * 迭代
+ */
+fun isSymmetric1(root: TreeNode?): Boolean {
 
     if (root == null) {
         return true
