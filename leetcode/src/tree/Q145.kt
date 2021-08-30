@@ -15,7 +15,7 @@ fun main() {
     root.right = TreeNode(4)
     root.right?.right = TreeNode(5)
 
-    println(postorderTraversal(root))
+    println(postorderTraversal1(root))
 }
 
 fun postorderTraversal(root: TreeNode?): List<Int> {
@@ -53,6 +53,42 @@ fun postorderTraversal(root: TreeNode?): List<Int> {
             // prev 指向 pop 节点
             prev = pop
 
+        }
+    }
+
+    return ret
+}
+
+
+
+
+fun postorderTraversal1(root: TreeNode?): List<Int> {
+    if (root == null) {
+        return ArrayList()
+    }
+
+    var prev:TreeNode? = null
+    var curr = root
+    val ret = ArrayList<Int>()
+
+    val stack = Stack<TreeNode>()
+    while (curr != null) {
+        stack.push(curr)
+        curr = curr.left
+    }
+
+    while (stack.isNotEmpty()) {
+        val pop = stack.pop()
+        if (pop.right != null && pop.right != prev) {
+            stack.push(pop)
+            curr = pop.right
+            while (curr != null) {
+                stack.push(curr)
+                curr = curr.left
+            }
+        }else {
+            ret.add(pop.`val`)
+            prev = pop
         }
     }
 
