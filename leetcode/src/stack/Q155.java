@@ -1,4 +1,4 @@
-package tree;
+package stack;
 
 import java.util.Stack;
 

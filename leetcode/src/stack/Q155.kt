@@ -1,4 +1,4 @@
-package tree
+package stack
 
 fun main() {
     // 155. 最小栈
@@ -62,6 +62,6 @@ class MinStack() {
 }
 
 open class ListNode(var `val`:Int) {
-    open var next:ListNode? = null
+    open var next: ListNode? = null
 
 }
