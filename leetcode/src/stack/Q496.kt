@@ -6,7 +6,6 @@ import kotlin.collections.HashMap
 fun main() {
     // 496. 下一个更大元素 I
     // https://leetcode-cn.com/problems/next-greater-element-i/
-    // TODO: 2021/9/2 单调栈解法
 
     println(nextGreaterElement1(intArrayOf(2,4), intArrayOf(1,2,3,4)).contentToString())
 }
@@ -33,7 +32,11 @@ fun nextGreaterElement(nums1: IntArray, nums2: IntArray): IntArray {
     return ret
 }
 
-
+/**
+ * 单调栈，遍历 nums2，依次加入栈中；
+ * 如果 i 小于等于栈顶元素，则将 i 加入栈中，此时从栈底到栈顶是递减的；
+ * 如果 i 大于栈顶元素，则将栈中元素全部出栈，栈中元素的下一个最大值即为 i
+ */
 fun nextGreaterElement1(nums1: IntArray, nums2: IntArray): IntArray {
 
     val map = HashMap<Int, Int>(nums2.size)
@@ -46,7 +49,7 @@ fun nextGreaterElement1(nums1: IntArray, nums2: IntArray): IntArray {
         stack.push(i)
     }
 
-    val ret = intArrayOf(nums1.size)
+    val ret = IntArray(nums1.size)
     for (i in nums1.indices) {
         if (map.containsKey(nums1[i])) {
             ret[i] = map[nums1[i]]!!
