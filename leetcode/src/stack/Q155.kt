@@ -1,5 +1,7 @@
 package stack
 
+import java.util.*
+
 fun main() {
     // 155. 最小栈
     // https://leetcode-cn.com/problems/min-stack/
@@ -9,7 +11,7 @@ fun main() {
     minStack.push(-3);
     println(minStack.getMin());   //--> 返回 -3.
     minStack.pop();
-    minStack.top();    //  --> 返回 0.
+    println(minStack.top());    //  --> 返回 0.
     println(minStack.getMin()); //  --> 返回 -2.
 
 }
@@ -17,48 +19,32 @@ fun main() {
 class MinStack() {
 
     /** initialize your data structure here. */
+    val valStack = Stack<Int>()
+    val minStack = Stack<Int>()
 
-    private val head = ListNode(-1)
-    private var minVal = Int.MAX_VALUE
-
-    fun push(`val`: Int) {
-        val newNode = ListNode(`val`)
-        newNode.next = head.next
-        head.next = newNode
-        if (minVal > `val`) {
-            minVal = `val`
+    fun push(x: Int) {
+        valStack.push(x)
+        if (minStack.isEmpty()) {
+            minStack.push(x)
+        }else if (minStack.peek() > x){
+            minStack.push(x)
         }
     }
 
     fun pop() {
-        if (head.next == null) {
-            return
-        }
-        val popVal = head.next?.`val`
-        head.next = head.next?.next
-        if (popVal == minVal) {
-            minVal = Int.MAX_VALUE
-            var cur = head.next
-            while (cur != null) {
-                if (cur.`val` < minVal) {
-                    minVal = cur.`val`
-                }
-                cur = cur.next
-            }
+        val pop = valStack.pop()
+        if (pop == minStack.peek()) {
+            minStack.pop()
         }
     }
 
     fun top(): Int {
-        if (head.next == null) {
-            return 0
-        }
-        return head.next?.`val`!!
+        return valStack.peek()
     }
 
     fun getMin(): Int {
-        return minVal
+        return minStack.peek()
     }
-
 }
 
 open class ListNode(var `val`:Int) {
