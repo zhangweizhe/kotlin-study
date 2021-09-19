@@ -19,7 +19,7 @@ fun main() {
 /**
  * 递归
  */
-fun isSymmetric(root: TreeNode?): Boolean {
+private fun isSymmetric(root: TreeNode?): Boolean {
     return help(root, root)
 }
 
@@ -39,7 +39,7 @@ private fun help(left: TreeNode?, right: TreeNode?):Boolean {
 /**
  * 迭代
  */
-fun isSymmetric1(root: TreeNode?): Boolean {
+private fun isSymmetric1(root: TreeNode?): Boolean {
 
     if (root == null) {
         return true
