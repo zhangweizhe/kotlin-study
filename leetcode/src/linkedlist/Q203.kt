@@ -4,9 +4,14 @@ fun main() {
     // 203. 移除链表元素
     // https://leetcode-cn.com/problems/remove-linked-list-elements/
 
+    val createList = LinkedListUtil.createList(intArrayOf(1,2,3,4))
+    LinkedListUtil.printLinkedList(removeElements(createList, 1))
 }
 
-fun removeElements(head: ListNode?, `val`: Int): ListNode? {
+/**
+ * 迭代
+ */
+fun removeElements1(head: ListNode?, `val`: Int): ListNode? {
     if (head == null) {
         return null
     }
@@ -21,4 +26,19 @@ fun removeElements(head: ListNode?, `val`: Int): ListNode? {
         }
     }
     return dummyHead.next
+}
+
+/**
+ * 递归
+ */
+fun removeElements(head: ListNode?, `val`: Int): ListNode? {
+    if (head == null) {
+        return null
+    }
+    head.next = removeElements(head.next, `val`)
+    if (head.`val` != `val`) {
+        return head
+    }else {
+        return head.next
+    }
 }
