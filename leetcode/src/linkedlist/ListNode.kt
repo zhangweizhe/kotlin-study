@@ -1,5 +1,5 @@
 package linkedlist
 
 class ListNode(var `val`: Int) {
-        var next: ListNode? = null
+      open  var next: ListNode? = null
 }

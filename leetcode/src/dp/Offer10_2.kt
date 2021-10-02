@@ -8,7 +8,7 @@ fun main() {
     println(numWays(500))
 }
 
-fun numWays(n: Int): Int {
+fun numWays1(n: Int): Int {
 
     if (n == 0) {
         return 1
@@ -26,4 +26,33 @@ fun numWays(n: Int): Int {
         q = tmp
     }
     return q
+}
+
+
+fun numWays(n: Int): Int {
+    val map = HashMap<Int, Int>(n)
+    return help(map, n)
+}
+
+fun help(map:MutableMap<Int, Int>, n: Int): Int {
+    if (n == 0 || n == 1) {
+        return 1
+    }
+    val n1 = if (map.containsKey(n-1)) {
+        map[n-1]
+    }else {
+        val help = help(map, n - 1)
+        help
+    } ?: 0
+
+    val n2 = if (map.containsKey(n-2)) {
+        map[n-2]
+    }else {
+        val help = help(map, n-2)
+        help
+    } ?: 0
+    val ret = (n1 + n2) % 1000000007
+    map[n] = ret
+
+    return ret
 }
