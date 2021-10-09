@@ -12,31 +12,35 @@ fun main() {
      */
 //    val array = intArrayOf(2,5,3,9,1,0,6,7)
 
-    val array = IntArray(10000) {
-        java.util.Random().nextInt(10000)
+    val array = IntArray(20000) {
+        java.util.Random().nextInt(15000)
     }
 
 //    println("before sort ${array.contentToString()}")
 
-    time("bubbleSort1") {
+    time("bubbleSort1", Runnable {
         bubbleSort1(array.copyOf())
-    }
+    })
 
-    time("bubbleSort2") {
+    time("bubbleSort2", Runnable {
         bubbleSort2(array.copyOf())
-    }
+    })
 
-    time("insertSort") {
+    time("insertSort", Runnable {
         insertSort(array.copyOf())
-    }
+    })
 
-    time("selectSort") {
+    time("selectSort", Runnable {
         selectSort(array.copyOf())
-    }
+    })
 
-    time("shellSort") {
-        shellSort(intArrayOf(10,1,13,9,7,5,2,4,3,12,8))
-    }
+    time("shellSort", Runnable {
+        shellSort(array.copyOf())
+    })
+
+    time("mergeSort", Runnable {
+        mergeSort(array.copyOf())
+    })
 //    println("after sort ${array.contentToString()}")
 }
 
@@ -182,7 +186,48 @@ private fun shellSort(array: IntArray) {
         gap /= 2
     }
 
-    println(array.contentToString())
+//    println(array.contentToString())
+}
+
+private fun mergeSort(array: IntArray) {
+    mergeSortHelper(array, 0, array.size - 1)
+//    println("merge sort ${array.contentToString()}")
+}
+
+private fun mergeSortHelper(array: IntArray, start: Int, end: Int) {
+    if (start >= end) {
+        return
+    }
+    val mid = (start + end) / 2
+
+    // 把数组从中间一分为二，左右各自执行归并排序
+    mergeSortHelper(array, start, mid)
+    mergeSortHelper(array,mid + 1, end)
+
+    // 左右执行完归并排序后，将他们合并到一起
+    // 合并两个有序数组
+    var left = start
+    var right = mid + 1
+    var k = 0
+    val tmp = IntArray(end - start + 1)
+    while (left <= mid && right <= end) {
+        if (array[left] <= array[right]) {
+            tmp[k++] = array[left++]
+        }else {
+            tmp[k++] = array[right++]
+        }
+    }
+    while (left <= mid) {
+        tmp[k++] = array[left++]
+    }
+    while (right <= end) {
+        tmp[k++] = array[right++]
+    }
+
+    // 拷贝回原数组，供下一轮合并使用
+    for (i in tmp.indices) {
+        array[start + i] = tmp[i]
+    }
 }
 
 private fun time(funName: String, runnable: Runnable) {
