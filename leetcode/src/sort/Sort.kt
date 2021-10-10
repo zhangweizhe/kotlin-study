@@ -39,7 +39,7 @@ fun main() {
     })
 
     time("mergeSort", Runnable {
-        mergeSort(array.copyOf())
+        mergeSort(intArrayOf(6,5,47,2,0,9))
     })
 //    println("after sort ${array.contentToString()}")
 }
@@ -191,42 +191,48 @@ private fun shellSort(array: IntArray) {
 
 private fun mergeSort(array: IntArray) {
     mergeSortHelper(array, 0, array.size - 1)
-//    println("merge sort ${array.contentToString()}")
+    println(array.contentToString())
 }
 
 private fun mergeSortHelper(array: IntArray, start: Int, end: Int) {
     if (start >= end) {
         return
     }
-    val mid = (start + end) / 2
-
-    // 把数组从中间一分为二，左右各自执行归并排序
+    // 将数组从中间一分为二
+    val mid = (end + start) / 2
+    // 左右两个数组分别执行归并排序
     mergeSortHelper(array, start, mid)
-    mergeSortHelper(array,mid + 1, end)
+    mergeSortHelper(array, mid+1, end)
 
-    // 左右执行完归并排序后，将他们合并到一起
-    // 合并两个有序数组
-    var left = start
-    var right = mid + 1
-    var k = 0
+    // 经过上面两次递归调用，array[start, mid] 和 array[mid+1, end] 已经是有序数组
+    // 将 array[start, mid] 和 array[mid+1, end] 合并到 tmp 数组中
     val tmp = IntArray(end - start + 1)
-    while (left <= mid && right <= end) {
-        if (array[left] <= array[right]) {
-            tmp[k++] = array[left++]
+    // 定义两个指针，分别指向左右两部分的第一个元素
+    var leftIndex = start
+    var rightIndex = mid + 1
+    // 指向 tmp 数组元素的指针
+    var k = 0
+
+    // 合并两个有序数组为一个有序数组
+    while (leftIndex <= mid && rightIndex <= end) {
+        if (array[leftIndex] <= array[rightIndex]) {
+            tmp[k++] = array[leftIndex++]
         }else {
-            tmp[k++] = array[right++]
+            tmp[k++] = array[rightIndex++]
         }
     }
-    while (left <= mid) {
-        tmp[k++] = array[left++]
+
+    // 合并剩下的部分
+    while (leftIndex <= mid) {
+        tmp[k++] = array[leftIndex++]
     }
-    while (right <= end) {
-        tmp[k++] = array[right++]
+    while (rightIndex <= end) {
+        tmp[k++] = array[rightIndex++]
     }
 
-    // 拷贝回原数组，供下一轮合并使用
+    // 把合并结果复制回原数组中
     for (i in tmp.indices) {
-        array[start + i] = tmp[i]
+        array[start+i] = tmp[i]
     }
 }
 
