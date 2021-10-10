@@ -1,7 +1,5 @@
 package sort
 
-import kotlin.random.Random
-
 fun main() {
 
     /**
@@ -40,6 +38,10 @@ fun main() {
 
     time("mergeSort", Runnable {
         mergeSort(intArrayOf(6,5,47,2,0,9))
+    })
+
+    time("quickSort", Runnable {
+        quickSort(intArrayOf(5,4,3,6,7,1,9))
     })
 //    println("after sort ${array.contentToString()}")
 }
@@ -234,6 +236,42 @@ private fun mergeSortHelper(array: IntArray, start: Int, end: Int) {
     for (i in tmp.indices) {
         array[start+i] = tmp[i]
     }
+}
+
+/**
+ * 快速排序
+ */
+private fun quickSort(intArray: IntArray) {
+    quickSortHelper(intArray, 0, intArray.size - 1)
+    println(intArray.contentToString())
+}
+
+private fun quickSortHelper(array: IntArray, start: Int, end: Int) {
+    if (start >= end) {
+        return
+    }
+    /**
+     * 把数组分为左右两个部分，左边是已处理的，右边是未处理的
+     * 定义游标 i 指向已处理数组的尾部，
+     * 从左往右遍历未处理的数组，如果小于 pivot，则放入已处理的尾部，然后i++
+     */
+    // i:指向已处理数组的尾部的指针
+    var i = start
+    val pivot = array[end]
+    // j:遍历未处理数组的指针
+    for (j in start until end) {
+        if (array[j] < pivot) {
+            val tmp = array[j]
+            array[j] = array[i]
+            array[i] = tmp
+            i++
+        }
+    }
+    array[end] = array[i]
+    array[i] = pivot
+
+    quickSortHelper(array, start, i-1)
+    quickSortHelper(array, i+1, end)
 }
 
 private fun time(funName: String, runnable: Runnable) {
