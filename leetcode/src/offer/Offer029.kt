@@ -57,6 +57,7 @@ private fun spiralOrder(matrix: Array<IntArray>): IntArray {
             topIndex++
             toRight = false
             toBottom = true
+            continue
         }
         if (toBottom && i < total) {
             // 1,3  2,3  3,3 ...
@@ -67,6 +68,7 @@ private fun spiralOrder(matrix: Array<IntArray>): IntArray {
             rightIndex--
             toBottom = false
             toLeft = true
+            continue
         }
         if (toLeft && i < total) {
             for (c in rightIndex downTo leftIndex) {
@@ -76,6 +78,7 @@ private fun spiralOrder(matrix: Array<IntArray>): IntArray {
             bottomIndex--
             toLeft = false
             toTop = true
+            continue
         }
         if (toTop && i < total) {
             for (r in bottomIndex downTo topIndex) {
@@ -85,6 +88,7 @@ private fun spiralOrder(matrix: Array<IntArray>): IntArray {
             leftIndex++
             toRight = true
             toTop = false
+            continue
         }
     }
 
