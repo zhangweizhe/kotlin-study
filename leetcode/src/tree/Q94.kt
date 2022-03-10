@@ -16,7 +16,7 @@ fun main() {
     root.right?.left = TreeNode(4)
     root.right?.right = TreeNode(3)
 
-    println(inorderTraversal2(root))
+    println(inorderTraversal3(root))
 }
 
 fun inorderTraversal(root: TreeNode?): List<Int> {
@@ -99,4 +99,44 @@ fun inorderTraversal2(root: TreeNode?): List<Int> {
     }
 
     return ret
+}
+
+
+
+
+
+
+
+
+fun inorderTraversal3(root: TreeNode?): List<Int> {
+
+    val list:ArrayList<Int> = ArrayList()
+
+    if (root == null) {
+        return list
+    }
+
+    val stack = Stack<TreeNode>()
+
+    var p = root;
+    while (p != null || stack.isNotEmpty()) {
+        while (p != null) {
+            stack.push(p)
+            p = p.left
+        }
+        val pop = stack.pop()
+        list.add(pop.`val`)
+        p = pop.right
+    }
+
+    return list
+}
+
+private fun help(root: TreeNode?, list: ArrayList<Int>) {
+    if (root == null) {
+        return
+    }
+    help(root.left, list)
+    list.add(root.`val`)
+    help(root.right, list)
 }
