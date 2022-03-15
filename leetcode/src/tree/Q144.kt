@@ -7,6 +7,18 @@ import kotlin.collections.ArrayList
 fun main() {
     // 144. 二叉树的前序遍历
     // https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+
+
+    val root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.left?.left = TreeNode(3)
+
+    root.right = TreeNode(4)
+    root.right?.right = TreeNode(5)
+
+    println(preorderTraversal2(root))
+
+
 }
 
 fun preorderTraversal(root: TreeNode?): List<Int> {
@@ -55,4 +67,36 @@ fun preorderTraversal1(root: TreeNode?): List<Int> {
     }
 
     return ret
+}
+
+
+fun preorderTraversal2(root: TreeNode?): List<Int> {
+    if (root == null) {
+        return ArrayList()
+    }
+
+    var p = root
+    val stack = Stack<TreeNode>()
+    val rest = ArrayList<Int>()
+    while (p != null || stack.isNotEmpty()) {
+        if (p != null) {
+            rest.add(p.`val`)
+        }
+        if (p != null) {
+            if (p.right != null) {
+                stack.push(p.right)
+            }
+        }
+        if (p != null) {
+            if (p.left != null) {
+                stack.push(p.left)
+            }
+        }
+        p = if (stack.isNotEmpty()) {
+            stack.pop()
+        }else {
+            null
+        }
+    }
+    return rest;
 }
