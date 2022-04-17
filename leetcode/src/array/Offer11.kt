@@ -3,7 +3,12 @@ package array
 fun main() {
     // 剑指 Offer 11. 旋转数组的最小数字
     // https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
-    println(minArray2(intArrayOf(3,1,1)))
+//    println(minArray3(intArrayOf(3,1,1)))
+
+//    println(maxArray(intArrayOf(4,5,6,1,2,3)))
+//    println(maxArray(intArrayOf(1,2,3,4,5,6)))
+//    println(maxArray(intArrayOf(3,3,3,3,3,3)))
+    println(maxArray(intArrayOf(6,5,4,3,2,1)))
 }
 
 /**
@@ -58,4 +63,50 @@ fun minArray2(numbers: IntArray): Int {
         mid = (left + right)/2
     }
     return numbers[left]
+}
+
+
+fun minArray3(numbers: IntArray): Int {
+    // 重点：寻找旋转点（或者说两个有序数组的交界点）
+    var left = 0
+    var right = numbers.size - 1
+    var mid = (left + right)/2
+
+    while (left < right) {
+        if (numbers[mid] > numbers[right]) {
+            // left ~ mid 是有序的，交界点在右边数组
+            // numbers[mid] 大于 numbers[right]，所以 numbers[mid] 肯定不会是最小值，可以舍弃，所以 left = mid + 1
+            left = mid + 1
+        }else if (numbers[mid] < numbers[right]) {
+            // mid ~ right 是有序的，交界点在左边数组
+            // numbers[mid] 可能是最小的，所以不能舍弃
+            right = mid
+        }else {
+            // numbers[mid] == numbers[right]，right 只能一点点往左边移动
+            right--
+        }
+        mid = (left + right)/2
+    }
+    return numbers[left]
+}
+
+fun maxArray(numbers: IntArray): Int {
+
+    var left = 0
+    var right = numbers.size - 1
+    var mid = (left + right) / 2
+
+    while (left < right) {
+        if (numbers[mid] > numbers[left]) {
+            // left~mid 是有序的，交界点在右边数组
+            left = mid
+        }else if (numbers[mid] < numbers[left]) {
+            // mid~right 是有序的，交界点在左边数组
+            right = mid - 1
+        }else {
+            left++
+        }
+        mid = (left + right)/2
+    }
+    return numbers[right]
 }

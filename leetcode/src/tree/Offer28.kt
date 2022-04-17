@@ -9,11 +9,11 @@ fun main() {
     val root = TreeNode(1)
     root.left = TreeNode(2)
     root.right = TreeNode(2)
-//    root.left?.left = TreeNode(3)
-    root.left?.right = TreeNode(3)
-//    root.right?.left = TreeNode(4)
+    root.left?.left = TreeNode(3)
+    root.left?.right = TreeNode(4)
+    root.right?.left = TreeNode(4)
     root.right?.right = TreeNode(3)
-    println(isSymmetric1(root))
+    println(isSymmetric2(root))
 }
 
 private fun isSymmetric(root: TreeNode?): Boolean {
@@ -69,6 +69,41 @@ private fun isSymmetric1(root: TreeNode?): Boolean {
         // 当前队列结构  （头）当前层 ｜ 下一层（尾）
         for (i in 0 until size) {
             // 把当前层poll出去
+            queue.poll()
+        }
+    }
+    return true
+}
+
+fun isSymmetric2(root: TreeNode?): Boolean {
+    if (root == null) {
+        return true
+    }
+    val queue = LinkedList<TreeNode?>()
+
+    queue.offer(root)
+    while (queue.isNotEmpty()) {
+        val size = queue.size
+        for (i in 0 until size) {
+            val left = queue.get(i)
+            val right = queue.get(size - 1 - i)
+            if (left == null && right == null) {
+                continue
+            }
+            if (left == null) {
+                return false
+            }
+            if (right == null) {
+                return false
+            }
+            if (left.`val` != right.`val`) {
+                return false
+            }
+
+            queue.offer(left.left)
+            queue.offer(left.right)
+        }
+        for (i in 0 until size) {
             queue.poll()
         }
     }
