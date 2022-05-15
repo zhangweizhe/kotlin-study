@@ -7,7 +7,6 @@ fun main() {
 }
 
 fun add(a: Int, b: Int): Int {
-
     // 本位和 = a^b
     var n = a.xor(b)
     // 进位 = a&b << 1

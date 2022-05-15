@@ -4,7 +4,7 @@ fun main() {
     // 剑指 Offer 61. 扑克牌中的顺子
     // https://leetcode-cn.com/problems/bu-ke-pai-zhong-de-shun-zi-lcof/
 
-    println(isStraight1(intArrayOf(1,2,5,0,3)))
+    println(isStraight2(intArrayOf(1,2,5,0,3)))
 }
 
 /**
@@ -55,4 +55,27 @@ fun isStraight1(nums: IntArray): Boolean {
         }
     }
     return nums[4] - nums[firstNoZeroIndex] < 5
+}
+
+fun isStraight2(nums: IntArray): Boolean {
+
+    var max = Int.MIN_VALUE
+    var min = Int.MAX_VALUE
+    var zeroCount = 0
+    for (i in nums) {
+        if (i == 0) {
+            zeroCount++
+        }else{
+            if (i == max || i == min) {
+                return false
+            }
+            if (i > max) {
+                max = i
+            }
+            if (i < min) {
+                min = i
+            }
+        }
+    }
+    return max - min < 5
 }
