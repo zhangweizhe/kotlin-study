@@ -4,7 +4,7 @@ fun main() {
     // https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/
     // 剑指 Offer 42. 连续子数组的最大和
 
-    println(maxSubArray1(intArrayOf(1)))
+    println(maxSubArray2(intArrayOf(1,2,3,-2,3,4)))
 }
 
 private fun maxSubArray(nums: IntArray): Int {
@@ -41,5 +41,22 @@ private fun maxSubArray1(nums: IntArray): Int {
         index++
     }
 
+    return max
+}
+
+private fun maxSubArray2(nums: IntArray): Int {
+    var pre = nums[0]
+    var max = nums[0]
+
+    for (i in 1 until nums.size) {
+        if (pre < 0) {
+            // 前面的和是负数，负增益，直接取当前的数
+            pre = nums[i]
+        }else {
+            // 前面的最大和是非负数，累加到当前这个数上
+            pre += nums[i]
+        }
+        max = Math.max(pre, max)
+    }
     return max
 }

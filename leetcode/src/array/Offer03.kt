@@ -3,7 +3,7 @@ package array
 fun main() {
     // 剑指 Offer 03. 数组中重复的数字
     // https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
-    println(findRepeatNumber1(intArrayOf(2, 3, 1, 0, 2, 5, 3)))
+    println(findRepeatNumber2(intArrayOf(2, 3, 1, 0, 2, 5, 3)))
 }
 
 fun findRepeatNumber(nums: IntArray): Int {
@@ -44,5 +44,24 @@ fun findRepeatNumber1(nums: IntArray): Int {
     }
 
     return -1
+}
+
+
+fun findRepeatNumber2(nums: IntArray): Int {
+
+    var i = 0
+    while (i < nums.size) {
+        while (nums[i] == i) {
+            i++
+        }
+        if (nums[i] == nums[nums[i]]) {
+            return nums[i]
+        }
+        val tmp = nums[nums[i]]
+        nums[nums[i]] = nums[i]
+        nums[i] = tmp
+    }
+    return -1
+
 }
 
