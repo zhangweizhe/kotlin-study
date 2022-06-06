@@ -16,10 +16,13 @@ fun <R, T> launchCoroutine(receiver: R, block: suspend R.() -> T) {
     block.startCoroutine(receiver, object : Continuation<T> {
         override fun resumeWith(result: Result<T>) {
             println("Coroutine End: $result")
+            result.onFailure {
+                context[CoroutineExceptionHandler]?.onError(it)
+            }
         }
 
         override val context: CoroutineContext
-            get() = EmptyCoroutineContext
+            get() = myCoroutineContent
     })
 }
 
@@ -29,6 +32,7 @@ fun <R, T> launchCoroutine(receiver: R, block: suspend R.() -> T) {
 class ProducerScope<T> {
     suspend fun produce(value: T) {
         println("ProducerScope.produce call: $value")
+        val i = 1/0
     }
 }
 
