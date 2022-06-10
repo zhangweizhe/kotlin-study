@@ -7,7 +7,7 @@ import kotlin.collections.HashSet
 fun main() {
     // 剑指 Offer 38. 字符串的排列
     // https://leetcode.cn/problems/zi-fu-chuan-de-pai-lie-lcof/
-    println(permutation("suvyls").contentToString())
+    println(permutation("0123456789").contentToString())
 
 }
 
@@ -26,7 +26,7 @@ fun permutation(s: String): Array<String> {
 }
 
 private fun dfs(charsSize: Int, resultList: MutableList<String>, curr: String, remain: String) {
-    if (curr.length == charsSize) {
+    if (curr.length == 6) {
         resultList.add(curr)
         return
     }

@@ -5,7 +5,7 @@ import java.util.*
 
 fun main() {
     // 打印从1到最大的n位数
-    println(printNumbers1(10))
+    println(printNumbers1(6))
 }
 
 /**
