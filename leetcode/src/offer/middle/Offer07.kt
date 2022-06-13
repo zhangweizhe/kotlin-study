@@ -37,3 +37,30 @@ private fun help(
     root.right = help(preorder, inorder, preorderRootIndex + leftChildrenCount + 1, inorderRootIndex + 1, inorderEndIndex)
     return root
 }
+
+
+
+
+
+
+
+private fun helpReview(preorder: IntArray, inorder: IntArray, preorderRootIndex: Int, inorderStartIndex: Int, inorderEndIndex: Int): TreeNode? {
+    if (inorderStartIndex > inorderEndIndex || inorderStartIndex < 0 || inorderEndIndex >= preorder.size) {
+        return null
+    }
+    val rootValue = preorder[preorderRootIndex]
+    val root = TreeNode(rootValue)
+    var inorderRootIndex = 0
+    for (i in inorderStartIndex..inorderEndIndex) {
+        if (inorder[i] == rootValue) {
+            inorderRootIndex = i
+            break
+        }
+    }
+    // 左子树递归
+    root.left = helpReview(preorder, inorder, preorderRootIndex + 1, inorderStartIndex, inorderRootIndex-1)
+    // 右子树递归
+    val leftChildrenCount = inorderRootIndex - inorderStartIndex
+    root.right = helpReview(preorder, inorder, preorderRootIndex + leftChildrenCount + 1, inorderRootIndex + 1, inorderEndIndex)
+    return root
+}

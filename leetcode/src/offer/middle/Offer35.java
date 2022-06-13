@@ -24,7 +24,7 @@ public class Offer35 {
 
     public static Node copyRandomList(Node head) {
         Node cur = head;
-        // 每个节点后面复制一个新的副本节点
+        // 1）每个节点后面复制一个新的副本节点
         // 如原来是 A->B->C->D
         // 复制后：A->A'->B->B'->C->C'->D->D'
         while (cur != null) {
@@ -34,23 +34,18 @@ public class Offer35 {
             cur = nodeNew.next;
         }
         cur = head;
-        // 副本节点的 random 指向原始节点的random.next
+        // 2）副本节点的 random 指向原始节点的random.next
         // A'.random -> A.random.next
         while (cur != null) {
             Node nodeNew = cur.next;
             nodeNew.random = cur.random != null ? cur.random.next : null;
             cur = nodeNew.next;
         }
-//        cur = head;
-//        while (cur != null) {
-//            Node nodeNew = cur.next;
-//            nodeNew.random = nodeNew.random != null ? nodeNew.random.next : null;
-//            cur = nodeNew.next;
-//        }
         Node newHead = head != null ? head.next : null;
         cur = head;
-        // 从 A->A'->B->B'->C->C'->D->D' 中挑出 A'->B'->C'->D'
+        // 3）从 A->A'->B->B'->C->C'->D->D' 中挑出 A'->B'->C'->D'
         while (cur != null) {
+            // 保存副本节点
             Node newNode = cur.next;
             // 1、先更新原始节点的 next 指针
             cur.next = cur.next.next;
