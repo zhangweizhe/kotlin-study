@@ -20,8 +20,9 @@ private fun help(postorder: IntArray, startIndex: Int, rootIndex: Int): Boolean 
     while (postorder[i] < rootVal) {
         i++
     }
-    // 验证右子树是否都大于 rootVal
+    // 记录右子树的起点，递归时要用
     val rightTreeStartIndex = i
+    // 验证右子树是否都大于 rootVal
     while (postorder[i] > rootVal) {
         i++
     }
