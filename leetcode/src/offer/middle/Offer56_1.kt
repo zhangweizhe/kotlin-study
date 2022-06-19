@@ -35,3 +35,26 @@ fun singleNumbers(nums: IntArray): IntArray {
     }
     return intArrayOf(x, y)
 }
+
+fun singleNumbers1(nums: IntArray): IntArray {
+    // 整个数组的异或结果
+    var z = 0
+    for (i in nums) {
+        z = z.xor(i)
+    }
+    // 计算异或结果中，最低位的1的位置
+    var n = 1
+    while(n.and(z) == 0) {
+        n = n.shl(1)
+    }
+    var x = 0
+    var y = 0
+    for (i in nums) {
+        if (i.and(n) == 0) {
+            x = x.xor(i)
+        }else {
+            y = y.xor(i)
+        }
+    }
+    return intArrayOf(x,y)
+}
