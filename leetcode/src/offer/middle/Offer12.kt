@@ -1,6 +1,9 @@
 package offer.middle
 
 fun main() {
+    val i:Int
+    i=30
+    println(i)
     // 剑指 Offer 12. 矩阵中的路径
     // https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/
     val ca1 = charArrayOf('A', 'B', 'C', 'E')
