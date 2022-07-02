@@ -3,7 +3,7 @@ package offer.middle
 fun main() {
     // 剑指 Offer 14- II. 剪绳子 II
     // https://leetcode.cn/problems/jian-sheng-zi-ii-lcof/
-    println(cuttingRope(127))
+    println(cuttingRope(120))
 }
 
 private fun cuttingRope(n: Int): Int {

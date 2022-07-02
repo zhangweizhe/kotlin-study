@@ -15,7 +15,10 @@ public class TestMain {
             CtClass ctClass = classPool.get("com.exapmle.TestBean");
             CtField appKeyField = ctClass.getDeclaredField("appKey");
             CtConstructor constructor = ctClass.getConstructor("()V");
-            constructor.insertBeforeBody("this.appKey = \"123qweasd\";\nInteger i = new Integer(2);\nfloat f = 0.5f;");
+            constructor.insertBeforeBody(
+                    "this.appKey = \"123qweasd\";\n" +
+                    "Integer i = new Integer(2);\n" +
+                    "float f = 0.5f;");
             ctClass.writeFile("");
         } catch (NotFoundException | CannotCompileException | IOException e) {
             e.printStackTrace();
