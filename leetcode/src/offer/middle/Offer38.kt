@@ -7,7 +7,7 @@ import kotlin.collections.HashSet
 fun main() {
     // 剑指 Offer 38. 字符串的排列
     // https://leetcode.cn/problems/zi-fu-chuan-de-pai-lie-lcof/
-    println(permutation("0123456789").contentToString())
+    println(permutation("1234567").contentToString())
 
 }
 
