@@ -1,7 +1,7 @@
 package bytedance
 
 import linkedlist.LinkedListUtil
-import linkedlist.ListNode
+import linkedlist.kt.ListNode
 
 fun main() {
     val head = LinkedListUtil.createList(intArrayOf(1,2,3,4))
@@ -16,9 +16,9 @@ fun reorderList(head: ListNode?): Unit {
     merge(head,l2)
 }
 
-fun middle(head:ListNode):ListNode{
+fun middle(head: ListNode): ListNode {
     var slow = head
-    var fast:ListNode? = head
+    var fast: ListNode? = head
     while(fast?.next != null && fast.next?.next != null){
         slow = slow.next!!
         fast = fast.next!!.next
@@ -26,20 +26,20 @@ fun middle(head:ListNode):ListNode{
     return slow
 }
 
-fun reverse(head:ListNode):ListNode{
-    var prev:ListNode?=null
-    var cur:ListNode? = head
+fun reverse(head: ListNode): ListNode {
+    var prev: ListNode?=null
+    var cur: ListNode? = head
     while(cur != null){
-        val tmp:ListNode? = cur.next
+        val tmp: ListNode? = cur.next
         cur.next = prev
         prev = cur
         cur = tmp
     }
     return prev!!
 }
-fun merge(l1:ListNode,l2:ListNode):ListNode{
-    var c1:ListNode? = l1
-    var c2:ListNode? = l2
+fun merge(l1: ListNode, l2: ListNode): ListNode {
+    var c1: ListNode? = l1
+    var c2: ListNode? = l2
     while(c1!=null&&c2!=null){
         val tmp1 = c1.next
         val tmp2 = c2.next

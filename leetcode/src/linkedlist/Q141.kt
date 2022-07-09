@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 环形链表
     // https://leetcode-cn.com/problems/linked-list-cycle/

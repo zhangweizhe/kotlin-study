@@ -1,7 +1,7 @@
 package offer
 
 import linkedlist.LinkedListUtil
-import linkedlist.ListNode
+import linkedlist.kt.ListNode
 
 class Offer25 {
 

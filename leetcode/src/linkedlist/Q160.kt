@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
     // 160. 相交链表
@@ -8,7 +10,7 @@ fun main() {
 /**
  * set 解法
  */
-fun getIntersectionNode(headA:ListNode?, headB:ListNode?):ListNode? {
+fun getIntersectionNode(headA: ListNode?, headB: ListNode?): ListNode? {
     val set = mutableSetOf<ListNode>()
     var curA = headA
     while (curA != null) {
@@ -29,7 +31,7 @@ fun getIntersectionNode(headA:ListNode?, headB:ListNode?):ListNode? {
 /**
  * 双指针解法
  */
-fun getIntersectionNode1(headA:ListNode?, headB:ListNode?):ListNode? {
+fun getIntersectionNode1(headA: ListNode?, headB: ListNode?): ListNode? {
     if (headA == null || headB == null) {
         return null
     }

@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 object LinkedListUtil {
 
     /**
@@ -25,7 +27,7 @@ object LinkedListUtil {
      * 根据传入的数组，创建一个链表，返回链表头
      */
     @JvmStatic
-    fun createList(array:IntArray):ListNode? {
+    fun createList(array:IntArray): ListNode? {
         var dummyHead = ListNode(0)
         var cur = dummyHead
 
@@ -42,9 +44,9 @@ object LinkedListUtil {
      * 反转链表，返回一个新的链表
      */
     @JvmStatic
-    fun reverseList(head: ListNode?):ListNode? {
-        var cur:ListNode? = head
-        var newHead:ListNode? = null
+    fun reverseList(head: ListNode?): ListNode? {
+        var cur: ListNode? = head
+        var newHead: ListNode? = null
         while (cur != null) {
             val newNode = ListNode(cur.`val`)
             newNode.next = newHead
@@ -58,8 +60,8 @@ object LinkedListUtil {
      * 反转链表，在原链表上操作
      */
     @JvmStatic
-    fun reverseListLocal(head: ListNode?):ListNode? {
-        var prev:ListNode? = null
+    fun reverseListLocal(head: ListNode?): ListNode? {
+        var prev: ListNode? = null
         var cur = head
         while (cur != null) {
             // 保存 cur 的后继节点

@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 2. 两数相加
     // https://leetcode-cn.com/problems/add-two-numbers/
@@ -32,7 +34,7 @@ fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
         cur = cur.next!!
     }
 
-    var pNoNull:ListNode? = p1 ?: p2
+    var pNoNull: ListNode? = p1 ?: p2
 
     while (pNoNull != null) {
         val tmp = pNoNull.`val` + addition

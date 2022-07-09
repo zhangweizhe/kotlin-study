@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 61. 旋转链表
     // https://leetcode-cn.com/problems/rotate-list/
@@ -10,7 +12,7 @@ fun main() {
 fun rotateRight(head: ListNode?, k: Int): ListNode? {
     var length:Int = 0
     var cur = head
-    var tail:ListNode? = null
+    var tail: ListNode? = null
     while (cur != null) {
         length++
         tail = cur
@@ -46,7 +48,7 @@ fun rotateRight(head: ListNode?, k: Int): ListNode? {
 
 fun rotateRight1(head: ListNode?, k: Int): ListNode? {
     var length = 0
-    var cur:ListNode? = ListNode(0)
+    var cur: ListNode? = ListNode(0)
     cur?.next = head
     while (cur?.next != null) {
         cur = cur.next!!

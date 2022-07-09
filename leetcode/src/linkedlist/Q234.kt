@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 234. 回文链表
     // https://leetcode-cn.com/problems/palindrome-linked-list/
@@ -17,7 +19,7 @@ fun main() {
  */
 private fun isPalindrome(head: ListNode?): Boolean {
     var cur = head
-    var newHead:ListNode? = null
+    var newHead: ListNode? = null
     while (cur != null) {
         var newNode = ListNode(cur.`val`)
         newNode.next = newHead

@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 24. 两两交换链表中的节点
     // https://leetcode-cn.com/problems/swap-nodes-in-pairs/
@@ -21,7 +23,7 @@ fun swapPairs(head: ListNode?): ListNode? {
     }
     // 一共三个节点 head-next-swapPairs(next.next)
     // 要交换成 next-head-swapPairs(next.next)
-    var next:ListNode? = head.next
+    var next: ListNode? = head.next
     head.next = swapPairs(next?.next)
     next?.next = head
 
@@ -33,10 +35,10 @@ fun swapPairs(head: ListNode?): ListNode? {
  * 迭代
  */
 fun swapPairs1(head: ListNode?): ListNode? {
-    var dummyHead:ListNode? = null
-    var left:ListNode? = head
-    var right:ListNode? = left?.next
-    var prev:ListNode? = null
+    var dummyHead: ListNode? = null
+    var left: ListNode? = head
+    var right: ListNode? = left?.next
+    var prev: ListNode? = null
     if (right == null) {
         return head
     }
@@ -68,7 +70,7 @@ fun swapPairs1(head: ListNode?): ListNode? {
 fun swapPairs2(head: ListNode?): ListNode? {
     var dummyHead = ListNode(0)
     dummyHead.next = head
-    var tmp:ListNode? = dummyHead
+    var tmp: ListNode? = dummyHead
 
     while (tmp?.next != null && tmp.next?.next != null) {
         var node1 = tmp.next

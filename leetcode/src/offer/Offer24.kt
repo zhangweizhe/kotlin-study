@@ -1,7 +1,7 @@
 package offer
 
 import linkedlist.LinkedListUtil
-import linkedlist.ListNode
+import linkedlist.kt.ListNode
 
 fun main() {
     // 剑指 Offer 24. 反转链表
@@ -13,7 +13,7 @@ fun main() {
 
 fun reverseList(head: ListNode?): ListNode? {
 
-    var prev:ListNode? = null
+    var prev: ListNode? = null
     var cur = head
     var next: ListNode? = null
 

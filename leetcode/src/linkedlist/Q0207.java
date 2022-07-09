@@ -25,12 +25,4 @@ public class Q0207 {
         return pA;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-        public ListNode(int val) {
-            this.val = val;
-            next = null;
-        }
-    }
 }

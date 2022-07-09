@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
 
