@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 82. 删除排序链表中的重复元素 II
     // https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
@@ -10,7 +12,7 @@ fun main() {
 private fun deleteDuplicates(head: ListNode?): ListNode? {
     var dummyHead = ListNode(0)
     dummyHead.next = head
-    var cur:ListNode? = dummyHead
+    var cur: ListNode? = dummyHead
 
     while (cur?.next != null && cur.next?.next != null) {
         if (cur.next?.`val` == cur.next?.next?.`val`) {

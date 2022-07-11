@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 203. 移除链表元素
     // https://leetcode-cn.com/problems/remove-linked-list-elements/
@@ -17,7 +19,7 @@ fun removeElements1(head: ListNode?, `val`: Int): ListNode? {
     }
     var dummyHead = ListNode(0)
     dummyHead.next = head
-    var cur:ListNode? = dummyHead
+    var cur: ListNode? = dummyHead
     while (cur?.next != null) {
         if (cur.next?.`val` == `val`) {
             cur.next = cur.next?.next

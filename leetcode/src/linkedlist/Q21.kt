@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // https://leetcode-cn.com/problems/merge-two-sorted-lists/
     val l1 = LinkedListUtil.createList(intArrayOf(1, 2, 4))

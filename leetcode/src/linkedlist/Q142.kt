@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 142. 环形链表 II
     // https://leetcode-cn.com/problems/linked-list-cycle-ii/
@@ -12,7 +14,7 @@ fun main() {
 fun detectCycle(head: ListNode?): ListNode? {
 
     var fast = head
-    var slow:ListNode? = head
+    var slow: ListNode? = head
 
     while (fast?.next != null) {
         fast = fast.next?.next

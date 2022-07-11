@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 705. 设计哈希集合
     // https://leetcode-cn.com/problems/design-hashset/
@@ -23,7 +25,7 @@ fun main() {
 class MyHashSet() {
 
     /** Initialize your data structure here. */
-    var head:ListNode? = null
+    var head: ListNode? = null
 
 
     fun add(key: Int) {
@@ -45,7 +47,7 @@ class MyHashSet() {
     fun remove(key: Int) {
         var fakeHead = ListNode(0)
         fakeHead.next = head
-        var cur:ListNode? = fakeHead
+        var cur: ListNode? = fakeHead
         while (cur != null && cur.next != null) {
             if (cur.next?.`val` == key) {
                 cur.next = cur.next?.next
@@ -59,7 +61,7 @@ class MyHashSet() {
 
     /** Returns true if this set contains the specified element */
     fun contains(key: Int): Boolean {
-        var cur:ListNode? = head
+        var cur: ListNode? = head
         while (cur != null) {
             if (cur.`val` == key) {
                 return true

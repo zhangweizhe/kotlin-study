@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 86. 分隔链表
     // https://leetcode-cn.com/problems/partition-list/
@@ -9,10 +11,10 @@ fun main() {
 }
 
 private fun partition(head: ListNode?, x: Int): ListNode? {
-    var small:ListNode? = ListNode(0)
-    var smallHead:ListNode? = small
-    var large:ListNode? = ListNode(0)
-    var largeHead:ListNode? = large
+    var small: ListNode? = ListNode(0)
+    var smallHead: ListNode? = small
+    var large: ListNode? = ListNode(0)
+    var largeHead: ListNode? = large
 
     var cur = head
     while (cur != null) {

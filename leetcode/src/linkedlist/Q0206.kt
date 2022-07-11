@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
 
 
@@ -37,9 +39,9 @@ fun getRightHalfIn(head: ListNode?): ListNode? {
     return slow?.next
 }
 
-private fun reverse(head: ListNode?):ListNode? {
-    var prev:ListNode? = null
-    var cur:ListNode? = head
+private fun reverse(head: ListNode?): ListNode? {
+    var prev: ListNode? = null
+    var cur: ListNode? = head
     while (cur != null) {
         var next = cur.next
         cur.next = prev

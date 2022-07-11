@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 19. 删除链表的倒数第 N 个结点
     // https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
@@ -10,7 +12,7 @@ fun main() {
 
 private fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
     val dummyHead = ListNode(0)
-    var left:ListNode? = dummyHead
+    var left: ListNode? = dummyHead
     left?.next = head
     var right = head
     var tmpN = n

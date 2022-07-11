@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
 
 }
@@ -19,9 +21,9 @@ private fun isPalindrome(head: ListNode?): Boolean {
     return true
 }
 
-private fun findRightHalf(head: ListNode?):ListNode? {
-    var fast:ListNode? = head
-    var slow:ListNode? = head
+private fun findRightHalf(head: ListNode?): ListNode? {
+    var fast: ListNode? = head
+    var slow: ListNode? = head
     while (fast?.next != null) {
         fast = fast.next?.next
         slow = slow?.next
@@ -33,7 +35,7 @@ private fun findRightHalf(head: ListNode?):ListNode? {
 }
 
 private fun reverse(head: ListNode?): ListNode? {
-    var prev:ListNode? = null
+    var prev: ListNode? = null
     var cur = head
     while (cur != null) {
         val next = cur.next

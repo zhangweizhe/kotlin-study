@@ -10,8 +10,8 @@ fun main() {
      */
 //    val array = intArrayOf(2,5,3,9,1,0,6,7)
 
-    val array = IntArray(20000) {
-        java.util.Random().nextInt(15000)
+    val array = IntArray(10) {
+        java.util.Random().nextInt(100)
     }
 
 //    println("before sort ${array.contentToString()}")
@@ -151,7 +151,7 @@ private fun selectSort(array: IntArray) {
     for (i in 0 until length) {
         var minIndex = i
         for (j in i until length) {
-            if (array[i] > array[j]) {
+            if (array[minIndex] > array[j]) {
                 minIndex = j
             }
         }
@@ -164,7 +164,7 @@ private fun selectSort(array: IntArray) {
     }
     println("select sort swap count $swapCount")
 
-//    println(array.contentToString())
+    println(array.contentToString())
 }
 
 /**

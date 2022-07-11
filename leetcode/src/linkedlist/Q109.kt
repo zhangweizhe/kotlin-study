@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 109. 有序链表转换二叉搜索树
     // https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/
@@ -17,7 +19,7 @@ private fun sortedListToBST(head: ListNode?): TreeNode? {
     var fast = head
     val dummyHead = ListNode(0)
     dummyHead.next = head
-    var slow:ListNode? = dummyHead
+    var slow: ListNode? = dummyHead
     while (fast?.next != null) {
         fast = fast.next?.next
         slow = slow?.next

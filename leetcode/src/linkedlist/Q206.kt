@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 206. 反转链表
     // https://leetcode-cn.com/problems/reverse-linked-list/
@@ -10,9 +12,9 @@ fun main() {
 /**
  * 反转链表，返回一个新的链表
  */
-fun reverseList1(head: ListNode?):ListNode? {
-    var cur:ListNode? = head
-    var newHead:ListNode? = null
+fun reverseList1(head: ListNode?): ListNode? {
+    var cur: ListNode? = head
+    var newHead: ListNode? = null
     while (cur != null) {
         val newNode = ListNode(cur.`val`)
         newNode.next = newHead
@@ -25,8 +27,8 @@ fun reverseList1(head: ListNode?):ListNode? {
 /**
  * 反转链表，在原链表上操作
  */
-fun reverseListLocal(head: ListNode?):ListNode? {
-    var prev:ListNode? = null
+fun reverseListLocal(head: ListNode?): ListNode? {
+    var prev: ListNode? = null
     var cur = head
     while (cur != null) {
         // 保存 cur 的后继节点

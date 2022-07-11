@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 面试题 02.01. 移除重复节点
     // https://leetcode-cn.com/problems/remove-duplicate-node-lcci/
@@ -17,7 +19,7 @@ fun removeDuplicateNodes(head: ListNode?): ListNode? {
     val set = hashSetOf<Int?>()
     var fakeHead = ListNode(0)
     fakeHead.next = head
-    var cur:ListNode? = fakeHead
+    var cur: ListNode? = fakeHead
     while (cur?.next != null) {
         if (cur.next?.`val` in set) {
             cur.next = cur.next?.next
@@ -37,9 +39,9 @@ fun removeDuplicateNodes(head: ListNode?): ListNode? {
 fun removeDuplicateNodes1(head: ListNode?): ListNode? {
     val fakeHead = ListNode(0)
     fakeHead.next = head
-    var x:ListNode? = fakeHead
+    var x: ListNode? = fakeHead
     while (x?.next != null) {
-        var y:ListNode? = x.next
+        var y: ListNode? = x.next
         while (y?.next != null) {
             if (x.next?.`val` == y.next?.`val`) {
                 y.next = y.next?.next

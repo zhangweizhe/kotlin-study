@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.kt.ListNode
+
 fun main() {
     // 92. 反转链表 II
     // https://leetcode-cn.com/problems/reverse-linked-list-ii/
@@ -17,7 +19,7 @@ fun main() {
 fun reverseBetween(head: ListNode?, left: Int, right: Int): ListNode? {
     var dummyHead = ListNode(0)
     dummyHead.next = head
-    var leftTail:ListNode? = dummyHead
+    var leftTail: ListNode? = dummyHead
     var leftCount = 1
     while (leftCount < left) {
         leftCount++
@@ -40,7 +42,7 @@ fun reverseBetween(head: ListNode?, left: Int, right: Int): ListNode? {
     // 左边断开
     leftTail?.next = null
 
-    var reversePrev:ListNode? = null
+    var reversePrev: ListNode? = null
     var reverseCur = reverseHead
 
     while (reverseCur != null) {
