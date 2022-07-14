@@ -31,4 +31,33 @@ public class Q3 {
         }
         return max;
     }
+
+    public int lengthOfLongestSubstring1(String s) {
+        if (s == null || s.equals("")) {
+            return 0;
+        }
+        if (s.length() == 1) {
+            return 1;
+        }
+        int left = -1;
+        int right = 0;
+        int maxLength = 1;
+        // 字符 -》 索引
+        Map<Character, Integer> map = new HashMap<>();
+        while (right < s.length()) {
+            char currentChar = s.charAt(right);
+            if (map.containsKey(currentChar)) {
+                // 遇到重复的字符了
+                // 获取重复字符的坐标
+                Integer duplicateIndex = map.get(currentChar);
+                if (duplicateIndex > left) {
+                    left = duplicateIndex;
+                }
+            }
+            map.put(currentChar, right);
+            maxLength = Math.max(maxLength, right - left);
+            right++;
+        }
+        return maxLength;
+    }
 }
