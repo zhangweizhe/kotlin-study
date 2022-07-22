@@ -3,7 +3,7 @@ package offer.middle
 fun main() {
     // 剑指 Offer 48. 最长不含重复字符的子字符串
     // https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/
-    println(lengthOfLongestSubstring("abcabcbb"))
+    println(lengthOfLongestSubstring("abba"))
 }
 
 fun lengthOfLongestSubstring(s: String): Int {

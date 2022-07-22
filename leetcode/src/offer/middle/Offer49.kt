@@ -3,7 +3,7 @@ package offer.middle
 fun main() {
     // 剑指 Offer 49. 丑数
     // https://leetcode.cn/problems/chou-shu-lcof/
-    println(nthUglyNumber(10))
+    println(nthUglyNumber1(10))
 }
 
 fun nthUglyNumber(n: Int): Int {
@@ -31,4 +31,31 @@ fun nthUglyNumber(n: Int): Int {
         }
     }
     return dp[n-1]
+}
+
+fun nthUglyNumber1(n: Int): Int {
+    // dp[i] 表示第 i 个抽数，比如 dp[1] 表示第 1 个丑数，那么第 n 个丑数，就是 dp[n]
+    val dp = IntArray(n+1)
+    dp[1] = 1
+    // 指向三个序列的指针
+    var p2 = 1
+    var p3 = 1
+    var p5 = 1
+    for (i in 2..n) {
+        // 从三个序列中，取最小的丑数加入最终的丑数序列中，保证有序
+        val min = Math.min(Math.min(dp[p2]*2, dp[p3]*3), dp[p5]*5)
+        // 加入最终的丑数序列
+        dp[i] = min
+        // 用 if...if...if... 去重，而不是 if...else if...else...
+        if (min == dp[p2]*2) {
+            p2++
+        }
+        if (min == dp[p3]*3) {
+            p3++
+        }
+        if (min == dp[p5]*5) {
+            p5++
+        }
+    }
+    return dp[n]
 }
